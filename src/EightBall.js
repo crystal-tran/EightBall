@@ -30,28 +30,29 @@ const ANSWERS = [
  * - answers (array of objects with msg and color)
 
  * State:
- * - msg
- * - color
+ * answer (an object: {msg, color})
  *
  * App -> Eightball
  */
 
-function EightBall({ answers = ANSWERS }){
-  const [msg, setMsg ] = useState("Think of a Question");
-  const [color, setColor] = useState("black");
+function EightBall({ answers=ANSWERS }){
+
+  const [answer, setAnswer] = useState({
+    msg: "Think of a Question",
+    color: "black"
+  });
 
 
-  const myStyles = { backgroundColor: color };
+  const myStyles = {backgroundColor: answer.color};
 
-    function getAnswer(){
-      const answer = answers[Math.floor(Math.random() * answers.length)];
-      setMsg(answer.msg);
-      setColor(answer.color)
-    }
+  function getAnswer(){
+    const newAnswer = answers[Math.floor(Math.random() * answers.length)];
+    setAnswer(newAnswer);
+  }
 
   return (
     <div className="EightBall" style={myStyles} onClick={getAnswer}>
-      <p>{msg}</p>
+      <p>{answer.msg}</p>
     </div>
   );
 }
