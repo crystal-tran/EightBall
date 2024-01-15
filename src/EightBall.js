@@ -35,7 +35,7 @@ const ANSWERS = [
  * App -> Eightball
  */
 
-function EightBall({ answers=ANSWERS }){
+function EightBall({ answers = ANSWERS }){
 
   const [answer, setAnswer] = useState({
     msg: "Think of a Question",
