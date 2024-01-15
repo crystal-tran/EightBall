@@ -35,25 +35,23 @@ const ANSWERS = [
  *
  * App -> Eightball
  */
-function EightBall({ answers = ANSWERS}){
-  const[msg, setMsg ] = useState("Think of a Question");
-  const[color, setColor] = useState("black");
+
+function EightBall({ answers = ANSWERS }){
+  const [msg, setMsg ] = useState("Think of a Question");
+  const [color, setColor] = useState("black");
 
 
   const myStyles = { backgroundColor: color };
-  console.log("myStyles:", myStyles);
 
     function getAnswer(){
       const answer = answers[Math.floor(Math.random() * answers.length)];
-      console.log("answer:", answer);
       setMsg(answer.msg);
       setColor(answer.color)
     }
 
   return (
-    <div className="EightBall" style={myStyles}>
+    <div className="EightBall" style={myStyles} onClick={getAnswer}>
       <p>{msg}</p>
-      <i onClick={getAnswer}>Click!</i>
     </div>
   );
 }
